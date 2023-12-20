@@ -1,0 +1,10 @@
+# IDE
+.idea/*
+.vscode/*
+.vs/*
+
+# Build output
+**/bin/
+**/obj/
+**/node_modules/
+**/dist/

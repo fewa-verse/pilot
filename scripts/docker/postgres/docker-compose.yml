@@ -1,0 +1,36 @@
+version: "3.9"
+name: "pg-stack"
+services:
+  db:
+    environment:
+      - POSTGRES_PASSWORD=passw0rd
+      - POSTGRES_USER=root
+    image: postgres:16
+    ports:
+      - "5430:5432"
+    volumes:
+      - db:/var/lib/postgresql/data
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: pgadmin@docker.net
+      PGADMIN_DEFAULT_PASSWORD: docker
+    ports:
+      - "5433:80"
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+    depends_on:
+      - db
+volumes:
+  db:
+    driver: local # Define the driver and options under the volume name
+    driver_opts:
+      type: none
+      device: /volumes/postgres/data/
+      o: bind
+  pgadmin:
+    driver: local # Define the driver and options under the volume name
+    driver_opts:
+      type: none
+      device: /volumes/pgadmin
+      o: bind
