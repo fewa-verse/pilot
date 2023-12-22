@@ -1,4 +1,7 @@
-var builder = WebApplication.CreateBuilder(args);
+using FEWA.Infrastructure.Helpers;
+using FEWA.Infrastructure.Logging;
+
+var builder = WebApplication.CreateBuilder(args).WithLogger();
 
 builder.Services.AddControllers();
 // Add services to the container.
@@ -18,5 +21,6 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.MapControllers();
 app.MapDefaultControllerRoute();
+app.MapVersionEndpoint();
 
 app.Run();

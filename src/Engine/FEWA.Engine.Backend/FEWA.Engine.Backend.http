@@ -1,6 +1,0 @@
-@FEWA.Engine.Backend_HostAddress = http://localhost:5279
-
-GET {{FEWA.Engine.Backend_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
