@@ -27,8 +27,7 @@ jobs:
         working-directory: ./src/Admin/FEWA.Admin.Frontend
         run: npm run build
 
-      - name: Build
-        working-directory: ./src/Admin/FEWA.Admin.Frontend
+      - name: Copy release
         run: mv ./src/Admin/FEWA.Admin.Frontend/build ./release/
         
       - name: Deploy 🚀
