@@ -4,7 +4,7 @@ services:
   db:
     environment:
       - POSTGRES_PASSWORD=passw0rd
-      - POSTGRES_USER=root
+      - POSTGRES_USER=postgres
     image: postgres:16
     ports:
       - "5430:5432"
@@ -16,7 +16,7 @@ services:
       PGADMIN_DEFAULT_EMAIL: pgadmin@docker.net
       PGADMIN_DEFAULT_PASSWORD: docker
     ports:
-      - "5433:80"
+      - "5431:80"
     volumes:
       - pgadmin:/var/lib/pgadmin
     depends_on:
