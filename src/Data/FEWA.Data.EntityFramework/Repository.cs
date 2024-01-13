@@ -12,15 +12,10 @@ public class Repository<TEntity>(ApplicationDbContext dbContext) : IRepository<T
         return await dbContext.Set<TEntity>().AsNoTracking().FirstOrDefaultAsync(e => e.Id == id);
     }
 
-    public IEnumerable<TEntity> GetByAsync(Func<TEntity, bool> predicate)
+    public IEnumerable<TEntity> GetByAsync(Func<TEntity, bool>? predicate = null)
     {
         var query = dbContext.Set<TEntity>().AsNoTracking();
-        if (predicate != null)
-        {
-            query = query.Where(predicate);
-        }
-        
-        return query;
+        return predicate != null ? query.Where(predicate) : query;
     }
 
     public Task<TEntity> AddAsync(TEntity entity)
